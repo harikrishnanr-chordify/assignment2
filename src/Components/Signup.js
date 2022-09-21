@@ -7,6 +7,7 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import axios from "axios";
 
 const Signup = () => {
   const [errorMessage, setErrorMessage] = React.useState("")
@@ -49,6 +50,16 @@ const Signup = () => {
   function handleUserSignUp(e) {
     e.preventDefault();
 
+    axios.post('https://reqres.in/api/register', {
+      email: userEmail,
+      password: userPassword
+    }, {
+      headers: {
+        'content-type': 'text/json'
+      }
+    }).then(function (response) {
+      console.log(response);
+    })
   }
 
   return (
@@ -68,6 +79,7 @@ const Signup = () => {
             <FormControl fullWidth sx={{ m: 1 }} variant="standard">
               <InputLabel htmlFor="standard-adornment-amount">Email</InputLabel>
               <Input
+                required
                 id="outlined-required"
                 label="Required"
                 type="email"
@@ -81,6 +93,7 @@ const Signup = () => {
               <InputLabel htmlFor="standard-adornment-amount">First Name</InputLabel>
               <Input
                 id="outlined-required"
+                required
                 label="Required"
                 onChange={(e) => setUserFirstName(e.target.value)}
                 value={userFirstName}
@@ -91,6 +104,7 @@ const Signup = () => {
               <InputLabel htmlFor="standard-adornment-amount">Last Name</InputLabel>
               <Input
                 id="outlined-required"
+                required
                 label="Required"
                 onChange={(e) => setUserLastName(e.target.value)}
                 value={userLastName}
@@ -101,6 +115,8 @@ const Signup = () => {
               <InputLabel htmlFor="standard-adornment-amount">Password</InputLabel>
               <Input
                 id="outlined-required"
+                required
+                type="password"
                 label="Required"
                 onBlur={(e) => validateForm('userPassword')}
                 onChange={(e) => setUserPassword(e.target.value)}
@@ -112,6 +128,8 @@ const Signup = () => {
               <InputLabel htmlFor="standard-adornment-amount">Confirm Password</InputLabel>
               <Input
                 id="outlined-required"
+                required
+                type='password'
                 label="Required"
                 onBlur={(e) => validateForm('userConfirmPassword')}
                 onChange={(e) => setUserConfirmPassword(e.target.value)}
