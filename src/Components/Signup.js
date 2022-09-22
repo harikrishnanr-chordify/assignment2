@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import axios from "axios";
+import Link from '@mui/material/Link';
 
 const Signup = () => {
   const [errorMessage, setErrorMessage] = React.useState("")
@@ -139,7 +140,7 @@ const Signup = () => {
 
             <FormControl variant="standard" >
               <Button type="submit" variant="contained">Sign Up</Button>
-              <Button href="#text-buttons">Sign In</Button>
+              <Link href="/login">Login</Link>
             </FormControl>
           </form>
         </Box>
