@@ -9,6 +9,7 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import axios from "axios";
 import Link from '@mui/material/Link';
+import { string } from 'yup';
 
 const Signup = () => {
   const [errorMessage, setErrorMessage] = React.useState("")
@@ -60,7 +61,9 @@ const Signup = () => {
       }
     }).then(function (response) {
       console.log(response);
-    })
+    }).catch(function (error) {
+      console.log(error)
+    });
   }
 
   return (
